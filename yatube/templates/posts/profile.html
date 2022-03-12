@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Профайл пользователя {{ author.get_full_name }}{% endblock %}
+{% block content %}
+    <div class="row">
+        <h2>{{ author.get_full_name }}</h2>
+        {% include 'posts/includes/profile_item.html' %}
+        <article class="col-12 col-md-9">
+            {% for post in page_obj %}
+                {% include 'posts/includes/post_item.html' %}
+                {% if not forloop.last %}<hr>{% endif %}
+            {% endfor %}
+            {% include 'posts/includes/paginator.html' %}
+        </article>
+    </div>
+{% endblock %}

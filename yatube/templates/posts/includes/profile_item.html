@@ -1,0 +1,31 @@
+<aside class="col-md-3 mb-3 mt-1">
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a>Автор:</a>
+            <a href="{% url 'posts:profile' author %}">{{ author.username }}</a>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a>Полное имя:</a>
+            <a>{{ author.get_full_name }}</a>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="{% url 'posts:profile' username=author.username %}">Всего постов</a>
+            <span class="badge bg-primary rounded-pill">{{ count }}</span>
+        </li>
+        {% if following %}
+        <a
+          class="btn btn-lg btn-light"
+          href="{% url 'posts:profile_unfollow' author.username %}" role="button"
+        >
+          Отписаться
+        </a>
+      {% else %}
+          <a
+            class="btn btn-lg btn-primary"
+            href="{% url 'posts:profile_follow' author.username %}" role="button"
+          >
+            Подписаться
+          </a>
+       {% endif %}
+    </ul>
+</aside>
