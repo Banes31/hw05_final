@@ -26,8 +26,6 @@ class Post(CreatedModel):
         help_text='Группа, к которой будет относиться пост'
     )
     image = models.ImageField(
-        # замечание ревью: "Нужно verbose_name для картинки."
-        # добавил verbose_name в явном виде + опционально help_text.
         verbose_name='Картинка',
         upload_to='posts/',
         blank=True,

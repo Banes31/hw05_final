@@ -159,16 +159,6 @@ def profile_follow(request, username):
 @login_required
 def profile_unfollow(request, username):
     user = get_object_or_404(User, username=username)
-    # Интересный механизм предложил Денис Фрунза (ревью):
-    # "unfollow, created = Follow.objects.get_or_create(
-    # unfollow, _ = Follow.objects.get_or_create(
-    # user=request.user, author=user)
-    # Подчеркивание (_) используется для игнорирования ненужных вам значений.
-    # Например:
-    # # Ignore the index
-    # for _ in range(10):
-    # do_something()
-    # x, *_, y = (1, 2, 3, 4, 5) # x = 1, y = 5"
     unfollow, _ = Follow.objects.get_or_create(
         user=request.user, author=user)
     unfollow.delete()

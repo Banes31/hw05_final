@@ -17,8 +17,6 @@ class GroupAdmin(admin.ModelAdmin):
     empty_value_display = '-пусто-'
 
 
-# Замечание ревью: "Добавьте админку и для комментариев."
-# Добавил сразу и для комментариев, и для подписок.
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('pk', 'text', 'author', 'post', 'pub_date')
     search_fields = ('text',)
